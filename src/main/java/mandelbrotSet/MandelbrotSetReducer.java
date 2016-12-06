@@ -9,6 +9,8 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 public class MandelbrotSetReducer
 	extends Reducer<IntWritable, Text, DoubleWritable, DoubleWritable> {
+	private DoubleWritable reValue = new DoubleWritable();
+	private DoubleWritable imValue = new DoubleWritable();
 
 	@Override
 	public void reduce(IntWritable key, Iterable<Text> values, Context context)
@@ -24,7 +26,9 @@ public class MandelbrotSetReducer
 				double re = Double.parseDouble(line2[0]);
 				double im = Double.parseDouble(line2[1]);
 				//Reducerの出力
-				context.write(new DoubleWritable(re), new DoubleWritable(im));
+				reValue.set(re);
+				imValue.set(im);
+				context.write(reValue, imValue);
 			}
 		}
 	}

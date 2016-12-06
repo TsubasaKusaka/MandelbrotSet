@@ -12,7 +12,7 @@ public class MandelbrotSetMapper
 
 	//Mapperの出力であり、Reducerでkeyとなるデータ
 	//1 = マンデルブロ集合、 0 = マンデルブロ集合でない
-	private IntWritable result = new IntWritable(1);
+	private IntWritable result = new IntWritable();
 
 	@Override
 	public void map(LongWritable key, Text values, Context context)
@@ -36,6 +36,8 @@ public class MandelbrotSetMapper
 		double im = 0;
 		//z = 実部 + 虚部
 		double z = 0;
+
+		result.set(1);
 
 		for (int i = 0; i < 50; i++) {
 			//マンデルブロ集合を計算

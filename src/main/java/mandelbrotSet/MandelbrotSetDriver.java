@@ -23,7 +23,7 @@ public class MandelbrotSetDriver extends Configured implements Tool {
 			return -1;
 		}
 
-		Job job = new Job(getConf(), "Mandelbrot Set");
+		Job job = new Job(getConf(), "MandelbrotSet");
 		job.setJarByClass(getClass());
 
 		//入力ディレクトリ
@@ -42,7 +42,7 @@ public class MandelbrotSetDriver extends Configured implements Tool {
 		job.setOutputKeyClass(DoubleWritable.class);
 		job.setOutputValueClass(DoubleWritable.class);
 
-		//ジョブを投入して終了を待つ
+		//ジョブの実行
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 
