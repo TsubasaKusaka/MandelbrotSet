@@ -45,7 +45,7 @@ public class MandelbrotSetMapper
 			im = 2 * after_x * after_y + before_y;
 			z = re + im;
 			//マンデルブロ集合でなかったらresult = 0
-			if (z > 2.0 || z < -2.0) {
+			if (z >= 2.0 || z <= -2.0) {
 				result.set(0);
 				break;
 			}
